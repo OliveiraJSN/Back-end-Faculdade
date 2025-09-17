@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Aula 02 - 13.08.2025</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <form action="/criar" method="POST">
+        <input type="text" name="descricao">
+        <button type="submit">Criar Tarefa</button>
+    </form>
+    <ul>
+        {% for task in tarefas %}
+        <li>{{ task.descricao }}</li>
+        <!--Adição form para delição de registros-->
+        <form action="/deletar/{{task.id}}" method="POST">
+            <button type="submit">Excluir</button>
+        </form>
+        <form action="/atualizar/{{task.id}}" method="POST">
+            <input type="text" name="descricao" value="{{tas.descricao}}">
+            <button type="submit">Atualizar</button>
+        </form>
+        {% endfor %}
+    </ul>
+</body>
+</html>

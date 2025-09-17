@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD MySQL</title>
+</head>
+<body>
+
+    <h4>
+        {% with messages = get %}
+            {% if messages %}
+                {% for message in messages  %}
+                    {{ message }}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </h4>
+
+    <body>
+        <h1>CRUD</h1>
+        <p><a href="{{url_for('addUsuario')}}">Adicionar Usuarios</a></p>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Cidade</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+            </tr>
+                {% for data in dados %}
+                    <tr>
+                        <td>{{data.id}}</td>
+                        <td>{{data.nome}}</td>
+                        <td>{{data.idade}}</td>
+                        <td>{{data.cidade}}</td>
+                        <!-- Opção de atualização de dados-->
+                        <td><a href="{{url_for('editUsuarios', id = data.id)}}">Editar</a></td>
+                        <!-- Opção de deleção de registros-->
+                        <td><a onclick="return confirm('Deletar registro');" href="{{url_for('deleteUsuarios', id = data.id)}}">Deletar</a></td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </body>
+</body>
+</html>

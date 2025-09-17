@@ -1,0 +1,10 @@
+Desenvolvimento Back End
+
+-------------------------------------------------------------------
+pip install bs4  #faz "tradução" do código html que vamos capturar
+
+requests.get(site) pega a request do site
+
+baixar o Selenium - Other languages exist (na parte do texto em verde), (Operana não funciona, Chrome é ruim de sincronizar recomendável usar o do Edge) baixar exatamente a mesma versão que está instalada no seu computador (verificar em ... -> Ajuda e comentarios -> Sobre o Microsoft Edge), descompactar o arquivo e apenas jogar o executável dentro da pasta do projeto
+
+pip install selenium no VsCode

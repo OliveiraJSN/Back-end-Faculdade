@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de times</title>
+    <link href="{{ url_for('static', filename='estilo.css') }}" rel="stylesheet">
+</head>
+<body>
+    <thead>
+        <h1>Lista de times</h1>
+    </thead>
+    <tbody>
+    {% for times in lista %}
+    <tr>
+        <td>
+            {{times}}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</body>
+</html>

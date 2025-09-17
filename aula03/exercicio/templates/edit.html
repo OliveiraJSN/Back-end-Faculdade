@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição Consultas</title>
+    <link href="{{ url_for('static', filename='estilo.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1>Editar Consulta</h1>
+    <fieldset>
+        <form method="post" action="{{ url_for('home')}}">
+            <div>
+                <label>Nome do Paciente:</label>
+                <input type="text" name="nome_paciente" value="{{infos.nome_paciente}}" required>
+            </div>
+            <div>
+                <label>Nome do Medico:</label>
+                <input type="text" name="nome_medico" value="{{infos.nome_medico}}" required>
+            </div>
+            <div>
+                <label>Especialidade:</label>
+                <input type="text" name="especialidade" value="{{infos.especialidade}}" required>
+            </div>
+            <div>
+                <label>Data da consulta:</label>
+                <input type="date" name="data_consulta" value="{{infos.data_consulta}}">
+            </div>
+            <div>
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+    </fieldset>
+</body>
+</html>

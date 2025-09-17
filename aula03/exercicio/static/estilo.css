@@ -1,0 +1,120 @@
+/* Reset suave */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* Página */
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+  line-height: 1.45;
+}
+
+/* Container central */
+body > * {
+  max-width: 920px;
+  margin: 32px auto;
+  padding: 0 20px;
+}
+
+/* Títulos */
+h2 {
+  margin: 28px 0 12px;
+  font-size: 1.25rem;
+  color: #111827;
+}
+
+/* Card genérico (aproveita as divs existentes) */
+div {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 10px 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Texto do arquivo */
+div span {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Formulário */
+form {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+
+form p { margin: 10px 0; }
+
+/* Input de arquivo */
+input[type="file"] {
+  display: inline-block;
+  padding: 10px;
+  border: 1px dashed #9ca3af;
+  border-radius: 10px;
+  background: #f9fafb;
+  width: 100%;
+}
+
+/* Botão */
+button, a[href*="download"] {
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform .04s ease, box-shadow .15s ease;
+}
+
+/* Botão principal (Enviar) */
+button {
+  background: blue;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37,99,235,.25);
+}
+
+
+button:hover { filter: brightness(1.05); }
+button:active { transform: translateY(1px); }
+
+/* Link de download como botão secundário */
+a[href*="download"] {
+  background: #eef2ff;
+  color: #3730a3;
+  border: 1px solid #c7d2fe;
+}
+a[href*="download"]:hover { filter: brightness(1.03); }
+a[href*="download"]:active { transform: translateY(1px); }
+
+/* Estado vazio */
+p { margin: 8px 0; }
+
+header{
+    margin: 0 auto;
+    margin-left: 40%;
+}
+
+td{
+    border: 1px solid rgba(0, 0, 0, 0.165);
+}
+
+button.excluir {
+    background-color: #dc2626;
+    color: white;
+    border-color: #b91c1c;
+}
+
+button.excluir:hover{
+    background-color: #b91c1c;
+}

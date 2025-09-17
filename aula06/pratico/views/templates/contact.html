@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Usuário</title>
+</head>
+<body>
+    <div>
+        <h1>Adicionar Novo Usuário</h1>
+        <div>
+            <form action="/users/new" method="POST">
+                <div>
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" required>
+                </div>
+
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div>
+                    <button type="submit">Salvar</button>
+                    <a href="/">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

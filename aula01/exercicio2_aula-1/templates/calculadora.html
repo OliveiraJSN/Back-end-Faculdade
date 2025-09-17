@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <h1>Calculadora - Operações Basicas</h1>
+
+    <!--step="any" -> permite a digitação de qualquer tipo de número -->
+
+    <form method="post">
+        <div>
+            <label>Digite o primeiro numero</label>
+            <input type="number" name="n1" id="n1" placeholder="Digite o 1º numero" step="any" required>
+        </div>
+        <br>
+        <div>
+            <label>Digite o segundo numero</label>
+            <input type="number" name="n2" id="n2" placeholder="Digite o 2º numero" step="any" required>
+
+            <select name="op" required>
+                <option value="soma">+</option>
+                <option value="subtracao">-</option>
+                <option value="mult">*</option>
+                <option value="divisao">/</option>
+            </select>
+            <button type="submit">=</button>
+
+        <!--</div>
+            <input type="button" value="+" class="somar" class="botao">
+            <input type="button" value="-" class="subtrair" class="botao">
+            <input type="button" value="*" class="multiplicar" class="botao">
+            <input type="button" value="/" class="dividir" class="botao">
+        -->
+    </form>
+
+    <!--
+        <h2> Em relação a classe erro, se a string "Erro" estiver presente no resultado
+
+            resultado|string -> Converte o resultado para string (caso não seja) :
+            "Erro" in ... : Verifica se a string "Erro" existe no texto
+
+            O simbolo | representa um filtro, que é utilizado para aplicar tranformações
+    -->
+
+    {% if resultado is not none %}
+        <h2 {% if "Erro" in resultado|string %} class="erro"{% endif %}>
+            Resultado:
+            {% if resultado is number %}
+                {{ "%.2f"|format(resultado)|replace(".",",") }}
+            {% else %}
+                {{ resultado }}
+            {% endif %}
+        </h2>
+
+        {% endif %}
+</html>

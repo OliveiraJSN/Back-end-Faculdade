@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BD de Consultas</title>
+    <link href="{{ url_for('static', filename='estilo.css') }}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Consultas</h1>
+        <p>Cadastre sua consulta <a href="{{url_for('cadastrarConsulta')}}">aqui</a></p>
+    </header>
+    <fieldset>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome Paciente</th>
+                <th>Nome Medico</th>
+                <th>Especialidade</th>
+                <th>Data</th>
+            </tr>
+            {% for data in dados %}
+                <tr>
+                    <td>{{data.id}}</td>
+                    <td>{{data.nome_paciente}}</td>
+                    <td>{{data.nome_medico}}</td>
+                    <td>{{data.especialidade}}</td>
+                    <td>{{data.data_consulta}}</td>
+                    <td><a href="{{url_for('editarConsultas', id = data.id)}}"><button>Editar</button></a></td>
+                    <td><a href="{{url_for('deleteConsultas', id = data.id)}}"><button>Excluir</button></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </fieldset>
+</body>
+</html>
