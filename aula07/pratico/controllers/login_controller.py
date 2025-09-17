@@ -33,3 +33,23 @@ def configura_rotas(app):
         session.pop('id', None)
         session.pop('nome', None)
         return redirect(url_for('login'))
+
+    #Rota de registro
+    @app.route('/registro', methods=['GET', 'POST']):
+    def registro():
+        msg = ''
+        if request.method == 'POST':
+            nome = request.form['nome']
+            email = request.form['email']
+            senha = request.form['senha']
+
+            conta_existente = Login.get_email(email)
+            if conta_existente:
+                msg = 'E-mail já cadastrado!'
+            elif not nome.isalnum():
+                msg = 'O nome do usuario deve conter apenas letras e numeros!'
+            elif not nome or not senha or not email:
+                msg = 'Por favor preencha todos os campos!'
+            else:
+                try:
+                    valid = validate_email(email) #validade email verifica se o e-mail está no padrão
