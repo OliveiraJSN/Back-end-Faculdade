@@ -16,7 +16,7 @@ class Login:
     def get_email(email):
         conn = inicia_bd()
         if conn: #Cria conexão com o BD
-            cursor = conn.cursor(disctionary=True) #dictonary traz no formato ex: "email: joao@gmail.com" se não fiz retorno só "joao@gamil.com"
+            cursor = conn.cursor(disctionary=True) #dictonary traz no formato ex: "email: joao@gmail.com" se não fiz retorno só "joao@gmail.com"
             curosr.execute('SELECT * FROM login_usuarios.usuarios WHERE email = %s', (email,)) #tem que colocar virgula no final
             usuario = cursor.fetchone() #apenas um envio por vez no bando de dados
             cursor.close()
