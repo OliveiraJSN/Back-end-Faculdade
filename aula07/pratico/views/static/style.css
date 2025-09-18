@@ -1,0 +1,13 @@
+.error {
+    color: red;
+}
+
+.succes{
+    color: green;
+}
+
+
+body{
+    background-color: antiquewhite;
+    text-align: center;
+}

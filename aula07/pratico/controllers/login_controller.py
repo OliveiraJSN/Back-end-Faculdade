@@ -1,9 +1,7 @@
 from flask import render_template, request, redirect, url_for, session, flash
-from models.login import login_controller
-#Importa a função que compara uma senha em teto pura do formulario com o hash que está no BD
+from models.login import Login
 from werkzeug.security import check_password_hash
 from email_validator import validate_email, EmailNotValidError
-
 
 def configura_rotas(app):
     #Rota principal e de Login
@@ -11,45 +9,71 @@ def configura_rotas(app):
     @app.route('/login', methods=['GET', 'POST'])
     def login():
         msg = ''
-        if request.methods == 'POST':
+        if request.method == "POST" and 'email' in request.form and 'senha' in request.form:
             email = request.form['email']
             senha_form = request.form['senha']
-            #Utilizando o Model para buscar um email no BD
-            usuario = Login.get_email(email) #verifica se tem o email no banco
 
-            if usuario and check_password_hash(usuario['senha'], senha_form): #verifica se o usuario e senha combinam
-                session['loggedin'] = True #logou no site
+            usuario = Login.get_email(email)
+
+            if usuario and check_password_hash(usuario['senha'], senha_form):
+                session['loggedin'] = True
                 session['id'] = usuario['id']
                 session['nome'] = usuario['nome']
                 return redirect(url_for('home'))
             else:
-                msg = 'E-mail ou senha incorretos!'
+                msg = 'E-mail ou senha incorretos'
         return render_template('login.html', msg=msg)
-
-    #Rota de Logout    -   Remove os dados da sessão (session)
-    @app.route('/logout'):
+    
+    #Rota de Logout - Remove os dados da sessão (session)
+    @app.route('/logout')
     def logout():
         session.pop('loggedin', None)
         session.pop('id', None)
         session.pop('nome', None)
         return redirect(url_for('login'))
-
-    #Rota de registro
-    @app.route('/registro', methods=['GET', 'POST']):
+    
+    #Rota de registro - Formulário de cadastro de usuário
+    @app.route('/registro', methods=['GET', 'POST'])
     def registro():
         msg = ''
-        if request.method == 'POST':
+        if request.method == 'POST' and 'nome' in request.form and 'senha' in request.form and 'email' in request.form:
             nome = request.form['nome']
-            email = request.form['email']
             senha = request.form['senha']
-
+            email = request.form['email']
+            #Utiliza a Models para verificar se já existe uma conta
             conta_existente = Login.get_email(email)
             if conta_existente:
-                msg = 'E-mail já cadastrado!'
+                msg = 'Já existe uma conta com este e-mail!'
             elif not nome.isalnum():
-                msg = 'O nome do usuario deve conter apenas letras e numeros!'
+                msg = 'O nome do usuário deve conter apenas letras e números'
             elif not nome or not senha or not email:
-                msg = 'Por favor preencha todos os campos!'
+                msg = 'Por favor, preencha todos os campos!'
             else:
                 try:
-                    valid = validate_email(email) #validade email verifica se o e-mail está no padrão
+                    #Valida o e-mail
+                    valid = validate_email(email)
+                    email_normalizado = valid.email
+
+                    Login.criar_login_usuario(nome, email_normalizado, senha)
+                    flash('Você foi registrado com sucesso! Faça o Login')
+                    return redirect(url_for('login'))
+                except EmailNotValidError:
+                    msg = 'Endereço de e-mail inválido'
+        elif request.method == 'POST':
+            msg = 'Por favor, preencha o formulário!'
+        return render_template('registro.html', msg=msg)
+    
+    #Rota da Página inicial (Protegida)
+    @app.route('/home')
+    def home():
+        if 'loggedin' in session:
+            return render_template('home.html', nome = session['nome'])
+        return redirect(url_for('login'))
+    
+    #Rota do Perfil do Usuário (Protegida)
+    @app.route('/perfil')
+    def perfil():
+        if 'loggedin' in session:
+            usuario = Login.get_id(session['id'])
+            return render_template('perfil.html', usuario=usuario)
+        return redirect(url_for('login'))

@@ -8,6 +8,6 @@ class Config:
     DB_CONFIG = {
         'host': 'localhost',
         'user': 'root',
-        'password': 'Neto0302*'
+        'password': 'Neto0302*',
         'database': 'login_usuarios'
     }

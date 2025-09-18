@@ -1,11 +1,10 @@
 from flask import Flask
 from controllers import login_controller
 
-app = Flask(__name__, template_folder='views/templates', static_folder='views/static')
+app = Flask(__name__, template_folder='views/templates', static_folder='viwes/static')
 
 app.config.from_object('config.Config')
 
-# chama a função configura_rotas do módulo login_controller
 login_controller.configura_rotas(app)
 
 if __name__ == '__main__':
