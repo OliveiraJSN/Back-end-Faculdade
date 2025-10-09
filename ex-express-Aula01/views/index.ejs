@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Produtos</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Lista de Produtos</h1>
+    <p>Produtos disponiveis em estoque!</p>
+
+    <ul id="list-produtos">
+      <% if (produtos.length > 0){ %>
+        <% produtos.forEach(produto => { %>
+            <div class="produto">
+              <h3 class="nome-produto"><%= produto.nome %></h3>
+              <h3 class="preco-produto"><%= produto.preco %></h3>
+            </div>
+        <% }) %>
+      <% } else { %>
+        <li>Nenhum item cadastrado</li>
+      <% } %>
+    </ul>
+  </div>
+</body>
+</html>

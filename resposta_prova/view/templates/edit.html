@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Editar Ingresso{% endblock %}
+
+{% block content %}
+<h2>Editar Ingresso</h2>
+<form action="{{ url_for('editarUsuarios', id=infos.id) }}" method="post">
+  <label>Nome do Filme:
+    <input type="text" name="nome_filme" value="{{ infos.nome_filme }}" required>
+  </label>
+
+  <label>Gênero:
+    <input type="text" name="genero" value="{{ infos.genero }}" required>
+  </label>
+
+  <label>Sessões:
+    <input type="text" name="sessoes" value="{{ infos.sessoes }}" required>
+  </label>
+
+  <label>Nome do Cliente:
+    <input type="text" name="nome_cliente" value="{{ infos.nome_cliente }}" required>
+  </label>
+
+  <label>Assento:
+    <input type="text" name="assento" value="{{ infos.assento }}" required>
+  </label>
+
+  <label>Data do Filme:
+    <input type="date" name="data_filme" value="{{ infos.data_filme }}" required>
+  </label>
+
+  <button type="submit">Atualizar</button>
+</form>
+{% endblock %}

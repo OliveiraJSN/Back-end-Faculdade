@@ -44,7 +44,7 @@ app.listen(port, () =>{
       //O 2º await PARA A EXECUÇÃO DA FUNÇÃO ASYNC NOVAMENTE! até que a função de abrir o navegador termine.
       await openModule.default(url);
     } catch(error){
-      console.error(`Erro ao tentat abrir o navegador:`, error);
+      console.error(`Erro ao tentar abrir o navegador:`, error);
     }
   })();
 });

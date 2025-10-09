@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Ingressos{% endblock %}
+
+{% block content %}
+<h2>Ingressos cadastrados</h2>
+
+{% if filmes %}
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Filme</th>
+      <th>Gênero</th>
+      <th>Sessões</th>
+      <th>Cliente</th>
+      <th>Assento</th>
+      <th>Data</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for f in filmes %}
+    <tr>
+      <td>{{ f.id }}</td>
+      <td>{{ f.nome_filme }}</td>
+      <td>{{ f.genero }}</td>
+      <td>{{ f.sessoes }}</td>
+      <td>{{ f.nome_cliente }}</td>
+      <td>{{ f.assento }}</td>
+      <td>{{ f.data_filme }}</td>
+      <td>
+        <a href="{{ url_for('editarUsuarios', id=f.id) }}">Editar</a>
+        <form action="{{ url_for('deleteUsuarios', id=f.id) }}" method="post" style="display:inline;">
+          <button type="submit">Excluir</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Nenhum ingresso cadastrado.</p>
+{% endif %}
+{% endblock %}

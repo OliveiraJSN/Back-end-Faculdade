@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Adicionar Ingresso{% endblock %}
+
+{% block content %}
+<h2>Adicionar Novo Ingresso</h2>
+<form action="{{ url_for('addUsuarios') }}" method="post">
+  <label>Nome do Filme:
+    <input type="text" name="nome_filme" required>
+  </label>
+
+  <label>Gênero:
+    <input type="text" name="genero" required>
+  </label>
+
+  <label>Sessões:
+    <input type="text" name="sessoes" required>
+  </label>
+
+  <label>Nome do Cliente:
+    <input type="text" name="nome_cliente" required>
+  </label>
+
+  <label>Assento:
+    <input type="text" name="assento" required>
+  </label>
+
+  <label>Data do Filme:
+    <input type="date" name="data_filme" required>
+  </label>
+
+  <button type="submit">Salvar</button>
+</form>
+{% endblock %}

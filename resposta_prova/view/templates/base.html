@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Cinema{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Cinema Ingressos</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Início</a>
+      <a href="{{ url_for('addUsuarios') }}">Novo Ingresso</a>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Cinema App</p>
+  </footer>
+</body>
+</html>
