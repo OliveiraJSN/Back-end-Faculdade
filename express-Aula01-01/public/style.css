@@ -1,0 +1,103 @@
+/* === Global Styles === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Container === */
+.container {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 40px 50px;
+  width: 90%;
+  max-width: 600px;
+  animation: fadeIn 0.6s ease;
+}
+
+/* === Header === */
+h1 {
+  text-align: center;
+  color: #4c3fc1;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+/* === User List === */
+#lista-usuarios {
+  list-style: none;
+}
+
+#lista-usuarios li {
+  background: #f5f6ff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  border-left: 5px solid #667eea;
+}
+
+#lista-usuarios li:hover {
+  background: #e8e9ff;
+  transform: translateY(-2px);
+}
+
+/* === User Info === */
+.nome {
+  font-weight: 600;
+  color: #333;
+}
+
+.email {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* === Empty State === */
+#lista-usuarios li:first-child:only-child {
+  text-align: center;
+  background: #fff3cd;
+  border-left: 5px solid #ffc107;
+  color: #856404;
+}
+
+/* === Animation === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+  .container {
+    padding: 25px;
+  }
+  #lista-usuarios li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .email {
+    margin-top: 5px;
+  }
+}
